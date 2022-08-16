@@ -75,10 +75,9 @@ module.exports = {
   plugins: [
     //webpack-moduleFederation
     new ModuleFederationPlugin({
-      name: 'host',
+      name: 'container',
       remotes: {
-        remote1: 'remote1@http://localhost:9001/remote1Entry.js',
-        remote2: 'remote2@http://localhost:9002/remote2Entry.js',
+        products: 'products@http://localhost:9010/productsEntry.js',
       //<nombre del import>: <nombre del remote>@<url>/<filename del remote>
       },
       shared: {
@@ -90,6 +89,10 @@ module.exports = {
           singleton: true,
           requiredVersion: dependencies['react-dom'],
         },
+        'react-router-dom': {
+          singleton: true,
+          requiredVersion: dependencies['react-router-dom'],
+        }
       },
     }),
     // webpack
