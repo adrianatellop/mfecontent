@@ -67,10 +67,12 @@
      }),
    ],
    */
-   
-   optimization: {
-     splitChunks: false
-   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+
    plugins: [
      //webpack-moduleFederation
      new ModuleFederationPlugin({
@@ -93,6 +95,10 @@
          'react-router-dom': {
            singleton: true,
            requiredVersion: dependencies['react-router-dom'],
+         },
+         '@pmc-uc/uc': {
+           singleton: true,
+           requiredVersion: dependencies['@pmc-uc/uc'],
          }
        },
      }),

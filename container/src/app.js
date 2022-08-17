@@ -1,12 +1,14 @@
-import React, {Suspense , lazy} from "react";
+import React, {Suspense , lazy, useContext} from "react";
 import {Routes, Switch, useNavigate, Route , useLocation, BrowserRouter as Router} from 'react-router-dom'
 import ErrorBoundary from "./ErrorBoundary";
+import { useInfo, InfoProvider } from "@pmc-uc/uc";
 
 const Header = () => {
 const navigate = useNavigate()
+const {info} = useInfo()
 
 return<>
-  <h3>Header {location.pathname === '/login' 
+  <h3>Header (product count: {info.productsCount}){location.pathname === '/login' 
       ? <span style={{pointer: 'cursor', borderBottom: 'solid 1px black'}} onClick={() => navigate('/')}>Ir a inicio</span>
       : <span style={{pointer: 'cursor', borderBottom: 'solid 1px black'}} onClick={() => navigate('/login')}>Iniciar sesión</span>} <span style={{pointer: 'cursor', borderBottom: 'solid 1px black'}} onClick={() => navigate('/recoverPassword')}>Recuperar contraseña</span>
   </h3>
@@ -61,7 +63,7 @@ return <>
                 </Suspense>
               }/>
               <Route path="/recoverPassword" element={
-                <Suspense fallback={<div>Getting Products... </div>}>
+                <Suspense fallback={<div>Getting RecoverPassword... </div>}>
                   {'Recover'}
                   <RecoverPassword />
                 </Suspense>
@@ -81,7 +83,9 @@ return <>
 
 const App = () => <> 
   <Router>
-    <AppW/>
+    <InfoProvider>
+      <AppW/>
+    </InfoProvider>
   </Router>
 </>
 
