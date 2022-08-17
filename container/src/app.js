@@ -1,35 +1,73 @@
-import React, {Suspense} from "react";
+import React, {Suspense , lazy} from "react";
 import {Routes, Switch, useNavigate, Route , useLocation, BrowserRouter as Router} from 'react-router-dom'
 import ErrorBoundary from "./ErrorBoundary";
-const Products = React.lazy(() => import('products/main'));
+
+const Header = () => {
+const navigate = useNavigate()
+
+return<>
+  <h3>Header {location.pathname === '/login' 
+      ? <span style={{pointer: 'cursor', borderBottom: 'solid 1px black'}} onClick={() => navigate('/')}>Ir a inicio</span>
+      : <span style={{pointer: 'cursor', borderBottom: 'solid 1px black'}} onClick={() => navigate('/login')}>Iniciar sesión</span>} <span style={{pointer: 'cursor', borderBottom: 'solid 1px black'}} onClick={() => navigate('/recoverPassword')}>Recuperar contraseña</span>
+  </h3>
+</>
+}
 
 const AppW = () => {
 const location = useLocation()
+
+const Products = lazy(() => import('products/list'));
+const SideBar = lazy(() => import('statusBar/main'));
+const Login = lazy(() => import('login/main'))
+const RecoverPassword = lazy(() => import('login/recover'))
+
 return <>
   <ErrorBoundary>
     <div style={{display: 'flex',flexDirection: 'column',minHeight: '100vh'}}>
       <div>
-        <h3>Header</h3>
+        <Header />
       </div>
       <div style={{flexGrow: 1}}>
-        <div style={{display: 'flex',flexDirection: 'row',minHeight: '100vw'}}>
-          <div>
-            <h3>sideBar</h3>
+        <div style={{display: 'flex',flexDirection: 'row'}}>
+          <div style={{maxWidth: '200px'}}>
+          {
+            (location.pathname !== '/login' &&
+            location.pathname !== '/recoverPassword')
+            && 
+            <Suspense fallback={<div>Getting Sidebar... </div>}>
+              {'SideBar'}
+              <SideBar />
+            </Suspense>
+          }
           </div>
           <div style={{flexGrow: 1}}>
             <Routes>
               <Route exact path="/" element={
                 <Suspense fallback={<div>Getting Products... </div>}>
-                  <Products tipo={''}/>
-                </Suspense> 
+                  {'Products'}
+                  <Products />
+                </Suspense>
+              }/>
+              <Route exact path="/login" element={
+                <Suspense fallback={<div>Getting Products... </div>}>
+                  {'Login'}
+                  <Login />
+                </Suspense>
               }/>
               <Route path="/products/*" element={
                 <Suspense fallback={<div>Getting Products... </div>}>
+                  {'Products'}
                   <Products />
-                </Suspense> 
+                </Suspense>
               }/>
-              <Route path="/login" element={<>login</>}/>
-              <Route path="*/*" element={<>No encontrrado</>}/>
+              <Route path="/recoverPassword" element={
+                <Suspense fallback={<div>Getting Products... </div>}>
+                  {'Recover'}
+                  <RecoverPassword />
+                </Suspense>
+              }/>
+              <Route path="*" element={<>No encontrrado</>}/>
+
             </Routes>
           </div>
         </div>
@@ -48,9 +86,3 @@ const App = () => <>
 </>
 
 export default App;
-
-/*
-<Suspense fallback={<div>Getting Landing... </div>}>
-  <Products />
-</Suspense>
-*/
