@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route , useNavigate, Routes, BrowserRouter } from 'react-router-dom'
-import { useInfo } from '@pmc-uc/uc'
+import { useInfo } from '@adrianatellop/sandbox-lib'
 
 const ProductsList = ({categoria}) => {
   let productos = []

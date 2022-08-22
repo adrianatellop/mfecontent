@@ -1,5 +1,5 @@
 import React from 'react';
-import {useInfo} from '@pmc-uc/uc'
+import {useInfo} from '@adrianatellop/sandbox-lib'
 
 function App() {
   const {info} = useInfo()

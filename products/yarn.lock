@@ -7,6 +7,21 @@
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.0.1.tgz#b38b444ad3aa5fedbb15f2f746dcd934226a12dd"
   integrity sha512-+u76oB43nOHrF4DDWRLWDCtci7f3QJoEBigemIdIeTi1ODqjx6Tad9NCVnPRwewWlKkVab5PlK8DCtPTyX7S8g==
 
+"@adrianatellop/sandbox-lib@0.0.0":
+  version "0.0.0"
+  resolved "https://npm.pkg.github.com/download/@adrianatellop/sandbox-lib/0.0.0/e974565e7c8eb6b1048800abd80da74bab055d065616eba8db4ba2e22718d11e#edadbb3532c6ba08e740344606fa4bdea86f9200"
+  integrity sha512-+xMafTexj+TIZkJqDds6aTLbPgbvrGo1eGAtcpUiYKxxQTQiCn/NtR6G390FSUxQSZ/9JPEIIonvDvIaN0rLQA==
+  dependencies:
+    "@types/react" "^18.0.14"
+    framer-motion "6.3.3"
+    npm-watch "^0.11.0"
+    react "17.0.2"
+    react-dom "17.0.2"
+    react-error-boundary "3.1.3"
+    react-hook-form "7.31.3"
+    react-input-mask "^2.0.4"
+    react-table "^7.8.0"
+
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.0.tgz#56c133824780de3174aed5ab6834f3026790154d"
@@ -1535,21 +1550,6 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
-
-"@pmc-uc/uc@0.0.0":
-  version "0.0.0"
-  resolved "https://gitlab.com/api/v4/projects/38263956/packages/npm/@pmc-uc/uc/-/@pmc-uc/uc-0.0.0.tgz#4e212d1977804d1bb4360a9c8c860407d6067bcb"
-  integrity sha1-TiEtGXeATRu0NgqcjIYEB9YGe8s=
-  dependencies:
-    "@types/react" "^18.0.14"
-    framer-motion "6.3.3"
-    npm-watch "^0.11.0"
-    react "17.0.2"
-    react-dom "17.0.2"
-    react-error-boundary "3.1.3"
-    react-hook-form "7.31.3"
-    react-input-mask "^2.0.4"
-    react-table "^7.8.0"
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.7"

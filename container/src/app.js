@@ -1,7 +1,7 @@
 import React, {Suspense , lazy, useContext} from "react";
 import {Routes, Switch, useNavigate, Route , useLocation, BrowserRouter as Router} from 'react-router-dom'
 import ErrorBoundary from "./ErrorBoundary";
-import { useInfo, InfoProvider } from "@pmc-uc/uc";
+import { useInfo, InfoProvider } from "@adrianatellop/sandbox-lib";
 
 const Header = () => {
 const navigate = useNavigate()
